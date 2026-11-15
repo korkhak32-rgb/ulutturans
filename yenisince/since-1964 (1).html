@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090d18">
+  <meta name="description" content="Since 1964 — Ay'dan Mars'a keşif araçlarının hikâyesi, mühendisliği ve bilimsel mirası.">
+  <title>Since 1964 — Keşif Araçları</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #090d18; --panel: #101827; --panel2: #131e30; --line: #26364b;
+      --text: #f3f5f8; --muted: #a7b3c3; --blue: #84c5ff; --amber: #ffcb77;
+      --green: #a4e4c2; --max: 1160px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.65 Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
+    a { color: inherit; }
+    .wrap { width: min(var(--max), calc(100% - 44px)); margin-inline: auto; }
+    .topbar { position: sticky; z-index: 10; top: 0; border-bottom: 1px solid #ffffff12; background: #090d18eF; backdrop-filter: blur(14px); }
+    .nav { min-height: 70px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { font-size: 14px; font-weight: 800; letter-spacing: .16em; text-decoration: none; }
+    .brand span { color: var(--blue); }
+    .navlinks { display: flex; gap: 26px; align-items: center; }
+    .navlinks a { text-decoration: none; font-size: 13px; color: var(--muted); }
+    .navlinks a:hover, .navlinks a:focus-visible { color: var(--text); }
+    .hero { min-height: 610px; position: relative; overflow: hidden; display: grid; align-items: center; border-bottom: 1px solid #ffffff12; }
+    .hero::before { content: ""; position: absolute; inset: 0; opacity: .75; background: radial-gradient(ellipse at 77% 42%, #35527c5c, transparent 31%), radial-gradient(ellipse at 78% 46%, #101a2b 0, #090d18 57%); }
+    .stars { position: absolute; inset: 0; opacity: .55; background-image: radial-gradient(1px 1px at 12% 22%, #dcecff 98%, transparent), radial-gradient(1px 1px at 32% 72%, #fff 98%, transparent), radial-gradient(2px 2px at 79% 19%, #fff 98%, transparent), radial-gradient(1px 1px at 91% 70%, #bdd7ff 98%, transparent), radial-gradient(1px 1px at 64% 83%, #fff 98%, transparent), radial-gradient(1px 1px at 48% 31%, #fff 98%, transparent); background-size: 300px 240px; }
+    .hero-inner { position: relative; padding-block: 85px 95px; }
+    .eyebrow { color: var(--blue); text-transform: uppercase; letter-spacing: .2em; font-size: 11px; font-weight: 800; }
+    h1 { margin: 18px 0 22px; max-width: 750px; font-size: clamp(58px, 10vw, 118px); line-height: .91; letter-spacing: -.075em; }
+    h1 span { display: block; color: transparent; -webkit-text-stroke: 1px #dbe9fb; }
+    .hero-copy { max-width: 590px; color: #c0cad8; font-size: 18px; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; padding: 11px 17px; border-radius: 4px; background: var(--blue); color: #0b1421; font-size: 13px; font-weight: 800; text-decoration: none; }
+    .button.secondary { border: 1px solid #ffffff3a; background: #10182766; color: var(--text); }
+    .hero-orbit { position: absolute; width: min(45vw, 540px); aspect-ratio: 1; right: 2%; top: 50%; transform: translateY(-48%); border: 1px solid #a9c9f21d; border-radius: 50%; box-shadow: 0 0 90px #3b6ca51c, inset 0 0 80px #3b6ca51c; }
+    .hero-orbit::before, .hero-orbit::after { content: ""; position: absolute; border: 1px solid #a9c9f21b; border-radius: 50%; inset: 10%; }
+    .hero-orbit::after { inset: 25%; background: radial-gradient(circle at 35% 32%, #b5d7ed, #6f8492 30%, #303d4b 66%, #111b27 72%); box-shadow: 0 0 80px #86b5e52b; }
+    .orbit-dot { position: absolute; z-index: 1; top: 16%; left: 29%; width: 9px; height: 9px; border-radius: 50%; background: var(--amber); box-shadow: 0 0 20px var(--amber); }
+    .intro { display: grid; grid-template-columns: 1.2fr .8fr; gap: 60px; padding-block: 76px; border-bottom: 1px solid var(--line); }
+    h2 { margin: 0; font-size: clamp(32px, 5vw, 52px); line-height: 1.08; letter-spacing: -.045em; }
+    .intro p { color: var(--muted); margin: 0; }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 32px; }
+    .section-head p { max-width: 390px; margin: 0; color: var(--muted); font-size: 14px; }
+    .missions { padding-block: 84px; }
+    .mission { display: grid; grid-template-columns: 290px 1fr; gap: 38px; padding: 28px; margin-bottom: 18px; background: linear-gradient(120deg, #111b2b, #0c1320); border: 1px solid var(--line); border-radius: 8px; }
+    .mission-aside { min-height: 250px; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; padding: 20px; border-radius: 5px; background: radial-gradient(circle at 65% 34%, #7d92a82c, transparent 39%), linear-gradient(145deg, #19273a, #0b101a); }
+    .mission:nth-of-type(2) .mission-aside { background: radial-gradient(circle at 70% 35%, #c2582739, transparent 35%), linear-gradient(145deg,#332017,#13131a 72%); }
+    .mission:nth-of-type(3) .mission-aside { background: radial-gradient(circle at 70% 35%, #c87b433b, transparent 36%), linear-gradient(145deg,#33291e,#13141a 72%); }
+    .mission-index { color: #d9e7f6; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; }
+    .mission-code { font-size: 64px; font-weight: 850; line-height: 1; letter-spacing: -.08em; color: #ffffffd9; }
+    .mission-tag { color: #bbc7d5; font-size: 12px; }
+    .mission-main h3 { margin: 0 0 7px; font-size: clamp(25px, 4vw, 34px); line-height: 1.1; letter-spacing: -.035em; }
+    .mission-main .deck { color: #c1cad7; margin: 0 0 22px; }
+    .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 20px 0 25px; }
+    .fact { padding: 12px 14px; border: 1px solid #ffffff13; border-radius: 4px; background: #ffffff05; }
+    .fact b { display: block; font-size: 14px; }
+    .fact span { color: var(--muted); font-size: 11px; }
+    details { border-top: 1px solid #ffffff19; padding-top: 14px; }
+    summary { cursor: pointer; color: var(--blue); font-size: 13px; font-weight: 750; }
+    .detail-content { padding-top: 10px; color: var(--muted); font-size: 14px; }
+    .detail-content h4 { color: var(--text); margin: 17px 0 4px; font-size: 14px; }
+    .detail-content p { margin: 6px 0 12px; }
+    .detail-content ul { padding-left: 19px; margin: 6px 0 12px; }
+    .detail-content li { padding: 2px 0; }
+    .timeline { padding: 70px 0 88px; background: #0d1421; border-block: 1px solid #ffffff10; }
+    .timeline-grid { margin-top: 32px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+    .time-item { padding: 20px 22px 10px 0; border-top: 1px solid #ffffff30; position: relative; }
+    .time-item::before { content: ""; position: absolute; top: -5px; width: 9px; height: 9px; border-radius: 50%; background: var(--blue); }
+    .time-item strong { display: block; margin-top: 12px; font-size: 21px; }
+    .time-item p { color: var(--muted); font-size: 13px; margin: 4px 0; }
+    .note { padding-block: 48px; color: var(--muted); font-size: 13px; }
+    .sources { padding: 0 0 58px; }
+    .sources h2 { font-size: 24px; }
+    .source-list { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+    .source-list a { color: var(--blue); text-decoration: none; border: 1px solid #ffffff20; border-radius: 4px; padding: 8px 11px; font-size: 12px; }
+    .source-list a:hover { background: #ffffff0b; }
+    footer { border-top: 1px solid #ffffff15; padding: 24px 0 36px; color: #8290a1; font-size: 12px; }
+    footer .wrap { display: flex; justify-content: space-between; gap: 18px; }
+    @media (max-width: 850px) { .hero-orbit { right: -20%; opacity: .65; } .intro { grid-template-columns: 1fr; gap: 18px; } .mission { grid-template-columns: 220px 1fr; gap: 24px; padding: 20px; } }
+    @media (max-width: 620px) { .wrap { width: min(100% - 30px, var(--max)); } .nav { min-height: 62px; } .navlinks { gap: 13px; } .navlinks a { font-size: 11px; } .hero { min-height: 550px; } .hero-orbit { width: 350px; right: -170px; top: 65%; opacity: .5; } .hero-inner { padding-block: 72px; } .hero-copy { font-size: 16px; } .section-head { display: block; } .section-head p { margin-top: 12px; } .mission { grid-template-columns: 1fr; gap: 20px; padding: 16px; } .mission-aside { min-height: 150px; } .mission-code { font-size: 48px; } .facts { grid-template-columns: 1fr 1fr; } .timeline-grid { grid-template-columns: 1fr; gap: 18px; } .time-item { padding-bottom: 2px; } footer .wrap { display: block; } }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav wrap" aria-label="Ana menü">
+      <a class="brand" href="#top">SINCE <span>1964</span></a>
+      <div class="navlinks"><a href="#hikaye">Hikâye</a><a href="#araclar">Araçlar</a><a href="#zaman-cizgisi">Zaman çizgisi</a></div>
+    </nav>
+  </header>
+  <main id="top">
+    <section class="hero">
+      <div class="stars"></div><div class="hero-orbit"><span class="orbit-dot"></span></div>
+      <div class="hero-inner wrap">
+        <div class="eyebrow">İnsanlığın keşif makineleri</div>
+        <h1>Since <span>1964</span></h1>
+        <p class="hero-copy">Ay yüzeyindeki ilk sürüşlerden Mars’ın kayalık yamaçlarına: başka dünyaları anlamamıza yardım eden keşif araçlarının hikâyesi.</p>
+        <div class="hero-actions"><a class="button" href="#araclar">Araçları keşfet&nbsp; ↓</a><a class="button secondary" href="#hikaye">Misyonu tanı</a></div>
+      </div>
+    </section>
+    <section class="intro wrap" id="hikaye">
+      <div><div class="eyebrow">Keşfin izinde</div><h2>Her tekerlek izi, yeni bir sorunun peşinde.</h2></div>
+      <p>Uzay araçları, insanın erişemediği çevrelerde gözlem yapar, örnek toplar ve bilimsel ölçümler gerçekleştirir. Lunar Roving Vehicle, astronotlara Ay’da hareket özgürlüğü verdi. Spirit ve Curiosity ise Mars’ı hareketli laboratuvarlara dönüştürdü.</p>
+    </section>
+    <section class="missions wrap" id="araclar">
+      <div class="section-head"><div><div class="eyebrow">Ay’dan yıldızlararası uzaya</div><h2>Keşif araçları</h2></div><p>Ay ve Mars yüzey araçlarından Güneş Sistemi’nin dış sınırlarını araştıran sondalara uzanan altı görev dosyası.</p></div>
+
+      <article class="mission" id="lrv">
+        <div class="mission-aside"><span class="mission-index">01 / Ay yüzeyi</span><span class="mission-code">LRV</span><span class="mission-tag">Lunar Roving Vehicle · 1971—1972</span></div>
+        <div class="mission-main"><h3>Lunar Roving Vehicle</h3><p class="deck">Astronotları Ay’da daha uzağa taşıyan, elektrikle çalışan ilk insanlı keşif aracı. Halk arasında Moon Buggy, yani Ay Arabası olarak bilinir.</p>
+          <div class="facts"><div class="fact"><b>~210 kg</b><span>Ağırlık</span></div><div class="fact"><b>~18 km/sa</b><span>Tasarlanan azami hız</span></div><div class="fact"><b>3 görev</b><span>Apollo 15, 16 ve 17</span></div></div>
+          <details open><summary>Teknik özellikler ve görevdeki rolü</summary><div class="detail-content">
+            <h4>Tasarım ve güç</h4><p>Boeing tarafından geliştirilen LRV, Ay’a taşınabilmesi için katlanabilir biçimde tasarlandı. Hafif alüminyum gövdesi yaklaşık 210 kilogramdı ve iki astronotu taşıyabiliyordu. Dört tekerleğinin her biri bağımsız bir elektrik motoruyla çalışıyordu. Enerji, iki adet 36 voltluk gümüş-çinko bataryadan sağlanıyordu.</p>
+            <h4>Tekerlekler ve kontrol</h4><p>Ay’da atmosfer bulunmadığı için geleneksel kauçuk lastikler yerine esnek çelik tel örgü tekerlekler kullanıldı. Bu yapı kayalık ve engebeli yüzeyde ilerlemeye göre tasarlanmıştı. Dört tekerlekten yönlendirme sistemi vardı; astronotlar hız ve yönü direksiyon yerine özel bir kontrol koluyla ayarlıyordu.</p>
+            <h4>Apollo görevleri ve bilim</h4><p>LRV ilk kez 1971’de Apollo 15’te kullanıldı; ardından Apollo 16 ve Apollo 17 görevlerinde de görev yaptı. Astronotlar üç görev boyunca Ay yüzeyinde toplam 90 kilometreden fazla yol katetti. Araç, daha geniş bölgelerin keşfedilmesini, kaya ve toprak örneklerinin toplanmasını ve bilimsel araştırmaların yürütülmesini sağladı.</p>
+            <h4>Ay ortamına uyum</h4><p>Aşırı sıcaklık değişimleri, düşük yer çekimi, ince Ay tozu ve atmosfer yokluğu tasarımın temel güçlükleriydi. LRV’de Dünya ile iletişim için antenler ve keşifleri kaydetmek için televizyon kamerası da bulunuyordu. Her üç Apollo görev aracı da görevler bitince Ay’da bırakıldı.</p>
+            <p><b>Mirası:</b> LRV, başka bir gök cisminde kullanılan ilk motorlu araç oldu. Apollo’da edinilen deneyimler, sonraki Ay ve Mars keşif araçlarının geliştirilmesine katkı sağladı.</p>
+          </div></details>
+        </div>
+      </article>
+
+      <article class="mission" id="spirit">
+        <div class="mission-aside"><span class="mission-index">02 / Mars yüzeyi</span><span class="mission-code">MER-A</span><span class="mission-tag">Spirit · 2004—2010</span></div>
+        <div class="mission-main"><h3>Spirit</h3><p class="deck">Gusev Krateri’ni araştıran robotik jeolog. 90 sol sürmesi planlanan görevi, Mars’ta altı yıla yayılan keşfe dönüştü.</p>
+          <div class="facts"><div class="fact"><b>6 tekerlek</b><span>Bağımsız motorlar</span></div><div class="fact"><b>90 sol</b><span>Planlanan ana görev</span></div><div class="fact"><b>22.03.2010</b><span>Son iletişim</span></div></div>
+          <details open><summary>Mühendislik, keşifler ve son sinyal</summary><div class="detail-content">
+            <h4>Güç ve hareket</h4><p>Spirit’in iki güneş paneli, koşullara bağlı olarak günde yaklaşık 140–900 watt-saat enerji üretebiliyordu. Mars tozu panellerde birikerek zamanla verimi düşürüyordu. Altı tekerleğin her birinde elektrik motoru vardı; rocker-bogie süspansiyonu kayalık arazide ilerlemesine yardımcı oluyordu.</p>
+            <h4>Robotik jeolog</h4><p>Önündeki robotik kol (Instrument Deployment Device, IDD) üzerinde kaya aşındırma aleti (RAT), X-ışını spektrometresi ve mikroskobik kameralar taşıyordu. Direk üzerindeki panoramik (Pancam) ve navigasyon kameraları çevrenin görüntülenmesini sağlıyordu.</p>
+            <h4>Görev ve bilimsel katkı</h4><p>10 Haziran 2003’te fırlatılan Spirit, 4 Ocak 2004’te Gusev Krateri’ne indi. Kraterin geçmişte su barındırmış olabileceğine ilişkin kanıtlar arasında silis açısından zengin topraklar ve hidrotermal süreçlerle ilişkili mineraller vardı. Araç ayrıca Mars tozlarının manyetik özelliklerini inceledi ve toz girdaplarını gözlemledi.</p>
+            <h4>Kumda kalış ve görev sonu</h4><p>Mayıs 2009’da Spirit, Troy bölgesindeki yumuşak kumlara saplandı. Kurtarma çalışmaları başarılı olmayınca sabit bir gözlem platformu olarak çalışmayı sürdürdü. 2010 Mars kışında panellerin Güneş’e yönelmesi zorlaştı ve bataryalar soğuktan etkilendi. NASA ile son iletişim 22 Mart 2010’da kuruldu; NASA misyonu 25 Mayıs 2011’de resmen sona erdirdi.</p>
+            <p><b>Mirası:</b> Spirit’in uzun ömrü ve yüzey ölçümleri, Mars’ın geçmiş çevresini anlamaya ve sonraki robotik keşiflere veri sağladı.</p>
+          </div></details>
+        </div>
+      </article>
+
+      <article class="mission" id="curiosity">
+        <div class="mission-aside"><span class="mission-index">03 / Mars yüzeyi</span><span class="mission-code">MSL</span><span class="mission-tag">Curiosity · 2012—devam ediyor*</span></div>
+        <div class="mission-main"><h3>Curiosity</h3><p class="deck">Mars Science Laboratory misyonunun hareketli bilim laboratuvarı. Gale Krateri’ndeki kaya, toprak ve atmosferi yerinde inceliyor.</p>
+          <div class="facts"><div class="fact"><b>26.11.2011</b><span>Fırlatılış</span></div><div class="fact"><b>06.08.2012</b><span>Mars’a iniş</span></div><div class="fact"><b>Gale Krateri</b><span>İniş bölgesi</span></div></div>
+          <details open><summary>İniş sistemi, bilim ve çalışma biçimi</summary><div class="detail-content">
+            <h4>Mars’a iniş</h4><p>Curiosity, NASA’nın Mars Science Laboratory (MSL) programı kapsamında 26 Kasım 2011’de fırlatıldı ve 6 Ağustos 2012’de Gale Krateri’ne indi. Paraşüt ve roket destekli iniş aşamalarının ardından “gökyüzü vinci” sistemi aracı yüzeye indirdi.</p>
+            <h4>Hareketli laboratuvar</h4><p>Altı tekerlekli araç, robotik koluyla kaya ve toprak örnekleri alıp kendi içindeki bilimsel laboratuvarlarda analiz eder. Kayaçları delerek örnek toplayabilir; kamerasıyla görüntü alır ve atmosfer ile yüzey koşullarını ölçer. Enerjisini radyoizotop termoelektrik jeneratörden (RTG) alır; plütonyum-238 bozunmasının oluşturduğu ısı elektrik enerjisine çevrilir.</p>
+            <h4>Bilimsel araştırmaları</h4><ul><li>Gale Krateri’nde eski göl ortamlarına ve mikrobiyal yaşamı destekleyebilecek kimyasal koşullara ilişkin kanıtlar araştırdı.</li><li>Mars’ın jeolojik geçmişini anlamak için kaya ve toprakları analiz etti.</li><li>Karbon içeren organik moleküller tespit etti; bunlar yaşamın yapı taşlarıyla ilişkili olabilir ancak tek başına yaşam kanıtı değildir.</li><li>Yüzey radyasyonunu ölçerek gelecekteki insanlı Mars görevlerine veri sağladı.</li></ul>
+            <h4>İletişim ve güncel durum</h4><p>Curiosity, Dünya ile iletişiminde Mars yörüngesindeki uydulardan ve doğrudan radyo bağlantısından yararlanır; komutları görev ekiplerinden alır. Paylaşılan bilgiye göre 14 Kasım 2026 itibarıyla görevi sürüyor, Mount Sharp yamaçlarını araştırıyor ve 26 Ağustos 2026’da iniş noktasına göre 1 kilometrelik yükselti kazanmış durumda.</p>
+            <p><b>Öğrenciler için:</b> Curiosity, Mars’ın geçmişte bugünkünden daha ılık ve su barındıran bir çevreye sahip olabileceğini gösteren bulgular sağladı. Mars’ta geçmiş ya da güncel yaşam bulunduğunu kanıtlamadı.</p>
+            <p><small>* Görev durumu ve 2026 kilometre bilgisi gönderdiğin içeriğe göre yazılmıştır.</small></p>
+          </div></details>
+        </div>
+      </article>
+
+      <article class="mission" id="voyager">
+        <div class="mission-aside"><span class="mission-index">04 / Yıldızlararası uzay</span><span class="mission-code">VGR</span><span class="mission-tag">Voyager 1 &amp; 2 · 1977—devam ediyor</span></div>
+        <div class="mission-main"><h3>Voyager 1 ve Voyager 2</h3><p class="deck">Dış gezegenlerin keşfi için tasarlanan ikiz sondalar, bugün Güneş’in etkisinin ötesinden veri gönderen insanlığın en uzak kaşifleri.</p>
+          <div class="facts"><div class="fact"><b>20.08.1977</b><span>Voyager 2 fırlatıldı</span></div><div class="fact"><b>05.09.1977</b><span>Voyager 1 fırlatıldı</span></div><div class="fact"><b>2 araç</b><span>Heliosferin dışında</span></div></div>
+          <details open><summary>Dış gezegenler, donanım ve yıldızlararası görev</summary><div class="detail-content">
+            <h4>İkizlerin farklı rotaları</h4><p>NASA, Voyager 1 ve Voyager 2’yi 1977’de Jüpiter ile Satürn’ü incelemek üzere fırlattı. Voyager 2, 20 Ağustos’ta; Voyager 1 ise 5 Eylül’de Cape Canaveral’dan yola çıktı. Voyager 1, Jüpiter’in yakınından 5 Mart 1979’da, Satürn’ün yakınından 12 Kasım 1980’de geçti. Titan yakın geçişi rotasını değiştirdi ve kuzeye yöneltti. Voyager 2 ise 9 Temmuz 1979’da Jüpiter’i, 25 Ağustos 1981’de Satürn’ü, 24 Ocak 1986’da Uranüs’ü ve 25 Ağustos 1989’da Neptün’ü ziyaret etti. Uranüs ve Neptün’ü yakından inceleyen tek uzay aracı Voyager 2’dir.</p>
+            <h4>Gezegen keşifleri</h4><p>Voyager 1’in Jüpiter gözlemleri, gezegenin ince halkalarını ve Io’daki etkin volkanları ortaya çıkardı; Jüpiter’in uydularını ayrıntılı biçimde görüntüledi. Satürn’de halkalar ve uydular araştırıldı. Voyager 2’nin uzun rotası Uranüs ve Neptün’ün atmosferleri, manyetik alanları, halkaları ve uyduları hakkında ilk yakın gözlemleri sağladı.</p>
+            <h4>Enerji ve bilimsel donanım</h4><p>Güneş’ten çok uzakta çalıştıkları için sondalar güneş panelleri yerine plütonyum-238’in bozunma ısısını elektriğe dönüştüren radyoizotop termoelektrik jeneratörleri (RTG) kullanır. Araçlardaki kamera, manyetometre, plazma ve parçacık ölçüm sistemleri farklı dönemlerde gezegenleri ve uzay ortamını inceledi. Güç azaldıkça bazı cihazlar kapatıldı. NASA’nın 2026 güncellemesine göre her iki araçta manyetometre ve plazma dalgası cihazı çalışmayı sürdürüyor; Voyager 1’de iki, Voyager 2’de üç bilimsel cihaz aktif.</p>
+            <h4>Heliosferden yıldızlararası ortama</h4><p>Voyager 1, 25 Ağustos 2012’de heliopozu geçerek yıldızlararası uzaya ulaştı. Voyager 2 bunu 5 Kasım 2018’de yaptı. Güneş rüzgârının oluşturduğu heliosferin dışındaki parçacık, plazma ve manyetik alan koşullarını doğrudan ölçüyorlar. NASA’nın 2026 tahminine göre Voyager 1, 18 Kasım 2026’da Dünya’dan yaklaşık 25,9 milyar kilometre, yani bir ışık-günü uzaklığa ulaşacak. Radyo sinyalinin tek yönlü yolculuğu yaklaşık 24 saat sürecek.</p>
+            <h4>İletişim ve Altın Plak</h4><p>İki araç, Kaliforniya, Madrid ve Canberra’daki antenlerden oluşan NASA Deep Space Network (DSN) üzerinden haberleşir. Gecikme nedeniyle sondalar anlık olarak kontrol edilmez; komut ve yanıtlar saatler sürebilir. Her iki aracın üzerinde Dünya’nın seslerini, dillerini, müziklerini ve görüntülerini taşıyan Altın Plak bulunur. Plak, görevlerin bilimsel donanımından ayrı olarak insanlık ve Dünya hakkında kültürel bir mesaj taşır.</p>
+            <p><b>Mirası:</b> Voyager 1 ve 2, dış gezegenlerin keşfini dönüştürdü; Güneş Sistemi’nin sınırının ötesinden ölçüm yapan ilk araçlar oldu.</p>
+          </div></details>
+        </div>
+      </article>
+
+      <article class="mission" id="new-horizons">
+        <div class="mission-aside"><span class="mission-index">05 / Kuiper Kuşağı</span><span class="mission-code">NH</span><span class="mission-tag">New Horizons · 2006—devam ediyor</span></div>
+        <div class="mission-main"><h3>New Horizons</h3><p class="deck">Plüton’u ilk kez yakından inceleyen ve daha sonra Kuiper Kuşağı’ndaki Arrokoth’un yanından geçen NASA uzay aracı.</p>
+          <div class="facts"><div class="fact"><b>19.01.2006</b><span>Fırlatılış</span></div><div class="fact"><b>14.07.2015</b><span>Plüton yakın geçişi</span></div><div class="fact"><b>01.01.2019</b><span>Arrokoth yakın geçişi</span></div></div>
+          <details open><summary>Plüton, Arrokoth ve dış Güneş Sistemi</summary><div class="detail-content">
+            <h4>Fırlatılış ve Jüpiter’den hız kazanma</h4><p>Yaklaşık 478 kilogramlık New Horizons, 19 Ocak 2006’da Cape Canaveral’dan Atlas V 551 roketiyle fırlatıldı. 2007’de Jüpiter’in yakınından geçerek kütleçekim desteği aldı; bu manevra Plüton’a yolculuğu yaklaşık üç yıl kısalttı. Jüpiter ve bazı uyduları da bu sırada gözlemlendi.</p>
+            <h4>Plüton sistemi</h4><p>14 Temmuz 2015’te Plüton’un yaklaşık 12.500 kilometre yakınından geçti. Yörüngeye girmek yerine hızlı bir yakın geçiş yaptı ve yoluna devam etti. Görüntüler, Sputnik Planitia adı verilen yaklaşık 1.000 kilometre genişliğindeki azot buzu ovası, dağlık bölgeler, buz düzlükleri ve atmosferde katmanlı sisler gösterdi. Uzay aracı ayrıca Charon’u ve Plüton’un küçük uyduları Styx, Nix, Kerberos ve Hydra’yı gözlemledi.</p>
+            <h4>Arrokoth ve Kuiper Kuşağı</h4><p>Plüton’dan sonra Kuiper Kuşağı’na ilerleyen araç, 1 Ocak 2019’da Arrokoth’un yakınından geçti. Bu, Kuiper Kuşağı’ndaki bir cismin ilk yakın keşfiydi. Arrokoth’un iki parçalı, kızılımsı görünümü ve görece ilkel yapısı, gezegen oluşumunun erken dönemlerini anlamaya yardımcı oluyor.</p>
+            <h4>Bilimsel araçlar</h4><p>LORRI yüksek çözünürlüklü görüntüler alır; Ralph yüzeylerin rengini ve bileşimini inceler; Alice morötesi ışık ve atmosfer hakkında veri toplar; REX atmosfer ölçümlerine katkı sağlar. SWAP ve PEPSSI parçacık ve plazma ortamını, Venetia Burney Student Dust Counter ise küçük toz parçacıklarını ölçer.</p>
+            <h4>Güncel görev</h4><p>NASA’nın 2026 duyurusuna göre New Horizons, 321 günlük uyku kipinden 23 Haziran 2026’da sağlıklı biçimde uyandı. Dünya’dan yaklaşık 9,5 milyar kilometre uzakta Kuiper Kuşağı ve heliosfer çevresinden topladığı verileri aktarmayı sürdürüyor. Uyku döneminde bazı ölçüm cihazları veri toplamaya ve depolamaya devam etti.</p>
+            <p><b>Mirası:</b> New Horizons, Plüton’un karmaşık jeolojisini ilk kez gösterdi ve Güneş Sistemi’nin dışındaki küçük, eski cisimleri yakından inceleme olanağı sağladı.</p>
+          </div></details>
+        </div>
+      </article>
+
+      <article class="mission" id="ranger">
+        <div class="mission-aside"><span class="mission-index">06 / Ay’a çarpma sondaları</span><span class="mission-code">R-7/8/9</span><span class="mission-tag">Ranger 7, 8 &amp; 9 · 1964—1965</span></div>
+        <div class="mission-main"><h3>Ranger 7, 8 ve 9</h3><p class="deck">Ay’a kasıtlı olarak çarpmadan önce yüzeyin yakın plan görüntülerini gönderen görevler. Başarıları, Apollo iniş bölgelerinin değerlendirilmesine katkı sağladı.</p>
+          <div class="facts"><div class="fact"><b>6 kamera</b><span>Her araçta</span></div><div class="fact"><b>17.439</b><span>Üç görevde görüntü</span></div><div class="fact"><b>2,6–2,7 km/sn</b><span>Yaklaşık çarpma hızı</span></div></div>
+          <details open><summary>Block III tasarımı ve üç görevin sonuçları</summary><div class="detail-content">
+            <h4>Çarpma sondası yaklaşımı</h4><p>Ranger’ın son başarılı serisi, karmaşık yumuşak iniş yerine Ay yüzeyine çarpana kadar görüntü gönderecek şekilde tasarlandı. Uzay araçları son yaklaşmada yaklaşık saniyede 2,6–2,7 kilometre hızla çarptı. Her birinde altı televizyon kamerası vardı: geniş açılı F-kanalları ve dar açılı P-kanalları. Güneş panelleri ve gümüş-çinko piller güç sağlıyordu; Güneş ve Dünya sensörleri ile yönelim jetleri aracı yönlendiriyordu. Altın kaplama folyo, beyaz boya ve cilalı alüminyum yüzeyler pasif ısı kontrolüne yardımcı oluyordu.</p>
+            <h4>Ranger 7 · 1964</h4><p>28 Temmuz 1964’te fırlatıldı ve 31 Temmuz’da Mare Cognitum bölgesine çarptı. NASA/JPL kayıtlarında, çarpmadan önceki yaklaşık 15 dakikada 4.308 görüntü aktardığı belirtilir. Yakın planlar, Ay yüzeyinin güvenli inişe elverişli sert zeminler içerdiğini göstererek Apollo planlamasına kritik veri sağladı.</p>
+            <h4>Ranger 8 · 1965</h4><p>17 Şubat 1965’te fırlatıldı ve 20 Şubat’ta Mare Tranquillitatis’e çarptı. NASA’nın görev özetinde 7.317 görüntü kaydedilmiştir; paylaşılan notlardaki 7.137 sayısı yerine resmî NASA kayıtları kullanılmıştır. Görev, farklı bir mare arazisinin yapısını ve Apollo 11’in daha sonra iniş yapacağı bölgeyi incelemeye katkıda bulundu.</p>
+            <h4>Ranger 9 · 1965</h4><p>21 Mart 1965’te fırlatıldı ve 24 Mart’ta Alphonsus Krateri’ne çarptı. 5.814 görüntü gönderdi. Görev sırasında görüntüler ABD televizyonunda canlı yayımlandı; kraterin engebeli yapısına ilişkin yakın plan veriler sağlandı. NASA teknik raporunda son görüntülerin çözünürlüğünün yaklaşık 0,4 metreye ulaştığı aktarılır.</p>
+            <p><b>Bilimsel önemi:</b> Ranger 7–9’un görüntüleri, Ay yüzeyinin özelliklerini haritalandırmaya ve insanlı iniş için uygun alanları değerlendirmeye yardımcı oldu. Bu görevler, önceki Ranger başarısızlıklarından sonra insansız Ay keşif programında belirleyici bir başarı dizisi oluşturdu.</p>
+          </div></details>
+        </div>
+      </article>
+    </section>
+    <section class="timeline" id="zaman-cizgisi">
+      <div class="wrap"><div class="eyebrow">Zaman çizgisi</div><h2>Keşif, adım adım</h2>
+        <div class="timeline-grid">
+          <div class="time-item"><strong>1971</strong><p>Lunar Roving Vehicle, Apollo 15 ile Ay’da ilk kez kullanıldı.</p></div>
+          <div class="time-item"><strong>2004</strong><p>Spirit, Gusev Krateri’ne indi ve 90 solluk planı aşan bir görev yürüttü.</p></div>
+          <div class="time-item"><strong>2012</strong><p>Curiosity, Gale Krateri’ne ulaştı ve Mars’ı laboratuvarıyla incelemeye başladı.</p></div>
+        </div>
+      </div>
+    </section>
+    <section class="note wrap"><p>Altı görev dosyası: Lunar Roving Vehicle, Spirit, Curiosity, Voyager 1 ve 2, New Horizons ve Ranger 7–9.</p></section>
+    <section class="sources wrap" aria-labelledby="sources-title"><h2 id="sources-title">Resmî kaynaklar</h2><div class="source-list">
+      <a href="https://nssdc.gsfc.nasa.gov/planetary/lunar/apollo_lrv.html" target="_blank" rel="noreferrer">NASA NSSDC · Lunar Roving Vehicle ↗</a>
+      <a href="https://science.nasa.gov/mission/mer-spirit/" target="_blank" rel="noreferrer">NASA Science · Spirit ↗</a>
+      <a href="https://science.nasa.gov/mission/msl-curiosity/" target="_blank" rel="noreferrer">NASA Science · Curiosity ↗</a>
+      <a href="https://science.nasa.gov/mars/curiosity-reaches-1-kilometer-elevation-gain/" target="_blank" rel="noreferrer">NASA · 1 km yükselti kazanımı ↗</a>
+      <a href="https://science.nasa.gov/blog/curiosity-blog-sols-5063-5069-rocks-and-chips/" target="_blank" rel="noreferrer">NASA · Kasım 2026 görev günlüğü ↗</a>
+      <a href="https://science.nasa.gov/mission/voyager/where-are-voyager-1-and-voyager-2-now/" target="_blank" rel="noreferrer">NASA Science · Voyager konumu ve cihaz durumu ↗</a>
+      <a href="https://science.nasa.gov/missions/new-horizons/nasas-new-horizons-spacecraft-wakes-from-hibernation-in-good-health/" target="_blank" rel="noreferrer">NASA Science · New Horizons 2026 güncellemesi ↗</a>
+      <a href="https://www.jpl.nasa.gov/missions/ranger-7/" target="_blank" rel="noreferrer">NASA JPL · Ranger 7 ↗</a>
+      <a href="https://science.nasa.gov/resource/nasa-facts-rangers-and-surveyors-to-the-moon/" target="_blank" rel="noreferrer">NASA Science · Ranger fotoğraf sayıları ↗</a>
+    </div></section>
+  </main>
+  <footer><div class="wrap"><span>SINCE 1964 · İnsanlığın keşif makineleri</span><span>Tek dosyalık, mobil uyumlu web sayfası</span></div></footer>
+</body>
+</html>
